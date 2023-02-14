@@ -44,3 +44,31 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+         ___        ______     ____ _                 _  ___  
+        / \ \      / / ___|   / ___| | ___  _   _  __| |/ _ \ 
+       / _ \ \ /\ / /\___ \  | |   | |/ _ \| | | |/ _` | (_) |
+      / ___ \ V  V /  ___) | | |___| | (_) | |_| | (_| |\__, |
+     /_/   \_\_/\_/  |____/   \____|_|\___/ \__,_|\__,_|  /_/ 
+ ----------------------------------------------------------------- 
+
+
+Hi there! Welcome to AWS Cloud9!
+
+To get started, create some files, play with the terminal,
+or visit https://docs.aws.amazon.com/console/cloud9/ for our documentation.
+
+Happy coding!
+
+
+npm i axios bootstrap 
+npm i react-bootstrap-table-next @types/react-bootstrap-table-next --save --legacy-peer-deps
+
+
+npm install react-bootstrap-table2-paginator @types/react-bootstrap-table2-paginator --save --legacy-peer-deps
+
+npm install react-bootstrap-table2-filter @types/react-bootstrap-table2-filter --save --legacy-peer-deps
+
+npm install react-bootstrap-table2-toolkit @types/react-bootstrap-table2-toolkit --save --legacy-peer-deps
+

@@ -1,26 +1,32 @@
 import React from 'react';
-import logo from './logo.svg';
+import {BrowserRouter, Routes , Route} from 'react-router-dom'
 import './App.css';
+import { Home } from './pages/Home';
+import User from './pages/User';
+import { GithubProvider } from './context/GithubContext';
+import 'bootstrap/dist/css/bootstrap.min.css'
+// import paginationFactory from 'react-bootstrap-table2-paginator'
+// import filterFactory, {textFilter} from 'react-bootstrap-table2-filter'
+// import ToolkitProvider from 'react-bootstrap-table2-toolkit'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    
+    <GithubProvider>
+    <BrowserRouter>
+     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <Routes>
+         <Route path='/' element={<Home />} />  
+          <Route path='/users/:login' element={<User />} /> 
+      </Routes>
       </header>
     </div>
+    
+    </BrowserRouter>
+    </GithubProvider>
   );
 }
+
 
 export default App;
