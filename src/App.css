@@ -20,14 +20,12 @@
 }
 
 .title {
-    margin: 30px 0px;
     font-size: xx-large;
     align-content: center;
-    margin-left: 50px;
 }
 
 .search_box, input {
-    width: 400px;
+    width: 60%;
     padding: 15px;
     white-space: nowrap;
     position: relative;
@@ -52,6 +50,15 @@
 
 .card {
     margin: 25px;
+}
+
+.fixed-search {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 1;
 }
 
 /*.card {*/

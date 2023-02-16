@@ -1,36 +1,28 @@
 import React from 'react';
 import {useEffect, useContext} from 'react'
-import GithubContext from '../context/GithubContext';
 import { useParams } from 'react-router-dom';
-import UserRepos from '../components/users/UserRepos';
+import GithubContext from '../../context/GithubContext';
+import UserRepos from './UserRepos';
 
-const User = () => {
+
+type Username = {
+    username: string
+}
+
+const User = ({username} : Username) => {
     
     const {user, repos, getUserData, getUserRepo} = useContext(GithubContext)
-    const params = useParams()
-    const username : string = params.login as string
-
-    
+  
     useEffect(() => {
          getUserData(username)
          getUserRepo(username)
-    }, [])
+    }, [username])
     
-     const {
-          name,
-          type,
+   const {
           avatar_url,
-          location,
           bio,
-          blog,
-          twitter_username,
           login,
-           html_url,
-          followers,
-          following,
-          public_repos,
-          public_gists,
-          hireable,
+          html_url,
           } = user
    
     return (
@@ -42,7 +34,7 @@ const User = () => {
            <a href={html_url} target="blank" className="card-text">Visit Github Profie</a>
          </div>
        
-       <UserRepos repos = {repos}/>
+        <UserRepos repos = {repos}/>
       </div>
         )
 }

@@ -1,20 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {useEffect, useContext} from 'react'
 import GithubContext from '../../context/GithubContext';
 import { Link } from 'react-router-dom';
+import User from './User';
 
-export const UserResults = () => {
+
+interface UserResultsModel {
+   isShow: boolean;
+   username: string;
+   handleClick: (username: string) => void
+}
+
+export const UserResults = ({isShow, username, handleClick} : UserResultsModel)=> {
     
     const {users, loading} = useContext(GithubContext);
+ 
     
-    // useEffect(() => {
-    // //   fetchUsers()
-    // }, [])
-    
-    console.log(users, 'users')
-    console.log(loading, 'loading')
-    
-    if(!loading) {
+    if(isShow) {
          return (
         <div className="container">  
          {users.map((user: any) => {
@@ -27,7 +29,8 @@ export const UserResults = () => {
                       {user.login} </span> 
                  </div>
                  <div className="cell">
-                 <Link to={`/users/${user.login}`}>View profile </Link>
+                 
+                 <button onClick={() => handleClick(user.login)}>View profile </button>
                  </div>
                  
             </div>
@@ -37,8 +40,8 @@ export const UserResults = () => {
         </div>
         )
     }
-    else {
-        return <div>Loading.....</div>
+    else if (username !== '') {
+        return <User username= {username}/> 
     }
-   
+    else return null
 }

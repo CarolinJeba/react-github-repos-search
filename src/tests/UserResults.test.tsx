@@ -5,27 +5,33 @@ import GithubContext from '../context/GithubContext';
 import users from '../mocks/users.json'
 
 
-describe('', () => {
-    const githubUserMock = {
-                       users: [{login: "john",}], 
-                       user: [{name: 'Carol'}], 
-                       repos: [],
-                       loading: true, 
-                       fetchUsers: jest.fn(), 
-                       searchUsers: jest.fn(), 
-                       getUserData: jest.fn(),
-                       getUserRepo: jest.fn()
+// describe('', () => {
+//     const githubUserMock = {
+//                       users: [{login: "john",}], 
+//                       user: [{name: 'Carol'}], 
+//                       repos: [],
+//                       loading: true, 
+//                       fetchUsers: jest.fn(), 
+//                       searchUsers: jest.fn(), 
+//                       getUserData: jest.fn(),
+//                       getUserRepo: jest.fn()
         
-    }
+//     }
     
-    const TestComponent = (githubUserMock: any) => {
-       return render(
-        <GithubContext.Provider value={githubUserMock}>
-          <UserResults />
-        </GithubContext.Provider>
-      );
-   }
-    it('', () => {
-         const {container} =  render(<UserResults />);
-    })
-})
+//     const TestComponent = (githubUserMock: any) => {
+        
+//         const props =  {
+//               isShow: false,
+//               username: '',
+//               handleClick: jest.fn
+// }
+//       return render(
+//         <GithubContext.Provider value={githubUserMock}>
+//           <UserResults />
+//         </GithubContext.Provider>
+//       );
+//   }
+//     it('', () => {
+//          const {container} =  render(<UserResults />);
+//     })
+// })

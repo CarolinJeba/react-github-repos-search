@@ -3,14 +3,17 @@ import {useState} from 'react'
 import { UserResults } from './UserResults';
 import GithubContext from '../../context/GithubContext';
 
-export const UserSearch = () => {
-    const [text, setText] = useState('');
+interface UserSearchModel {
+    handleBtnClick: (value: boolean) => void
+}
+
+export const UserSearch = ({handleBtnClick} : UserSearchModel) => {
     
-     const {users, loading, searchUsers} = useContext(GithubContext)
+    const [text, setText] = useState('');
+    const {users, loading, searchUsers} = useContext(GithubContext)
     
     const handleChange = (e: any) => setText(e.target.value)
     
- 
     const handleSubmit =async  (e: any) => {
         e.preventDefault();
         
@@ -18,9 +21,7 @@ export const UserSearch = () => {
             alert('Please enter value')
         }
         else {
-            
             searchUsers(text)
-            
             setText('')
         }
     }
@@ -28,17 +29,17 @@ export const UserSearch = () => {
         
     if (!loading) {
             return (
-                  <div className = "box">
+                  <div className = "box fixed-search">
                      <form onSubmit={handleSubmit}>
                        <div className = "search_box">
                        <input type = 'text' placeholder = "Enter username" className = "" value={text} onChange={handleChange}/>
-                       <button type = 'submit' className= "btn  btn-lg btn-secondary search-btn" > Search </button>
+                       <button type = 'submit' onClick = {() => handleBtnClick(true)} className= "btn  btn-lg btn-secondary search-btn"> Search </button>
                     </div>
                     </form>
                   </div>
                   )
         }
         else {
-            return <div></div>
+            return <div>Loading..</div>
         }
 }

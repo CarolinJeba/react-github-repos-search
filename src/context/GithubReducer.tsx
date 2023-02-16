@@ -2,8 +2,8 @@ import React from 'react';
 
 interface GithubState {
     users: {}[]
-    user: any,
-    repos: any,
+    user: {}[],
+    repos: {}[],
     loading: boolean
 }
 

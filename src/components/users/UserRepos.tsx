@@ -3,10 +3,11 @@ import {useEffect, useContext} from 'react'
 import BootstrapTable from 'react-bootstrap-table-next'
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
+import { ReposModel } from '../tsmodels/repos';
 
-const UserRepos = (repos: any) => {
+
+const UserRepos = (repos: ReposModel) => {
     
-    console.log(repos, 'repos inside repos')
     const columns = [ {
          dataField: 'id',
          text: 'ID (Sortable)',

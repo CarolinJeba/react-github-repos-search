@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import User from '../pages/User';
 import GithubContext from '../context/GithubContext';
+import User from '../components/users/User';
 
 
 describe('renders User component' ,  () => {
@@ -21,7 +21,7 @@ describe('renders User component' ,  () => {
    const TestComponent = (githubUserMock: any) => {
        return render(
         <GithubContext.Provider value={githubUserMock}>
-          <User />
+          <User username= ""/>
         </GithubContext.Provider>
       );
    }

@@ -1,15 +1,17 @@
 import React , {ReactNode} from 'react';
 import  { createContext , useReducer} from 'react'
 import githubReducer from './GithubReducer';
+import { ReposModel } from '../components/tsmodels/repos';
+
 
 interface GithubContextProps  {
-    users: any, 
+    users: {}[], 
     user: any,
-    repos: any,
+    repos: [],
     loading: boolean,
-    searchUsers: (text: string) => Promise<any>
-    getUserData: (login: string) => Promise<any>
-    getUserRepo: (login: string) => Promise<any>
+    searchUsers: (text: string) => Promise<void>
+    getUserData: (login: string) => Promise<void>
+    getUserRepo: (login: string) => Promise<void>
 }
 
 
@@ -48,14 +50,15 @@ export const GithubProvider = ({children} : Props) => {
         })
         
         
+        //  const response = await axios.get(`${process.env.REACT_APP_GITHUB_URL}/search/users?${params}`);
+        
         const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/search/users?${params}`, {
             headers: {
                  Authorization: `token ${process.env.REACT_APP_GITHUB_AUTH_TOKEN}`
                 }
         })
-        
-        const {items} = await response.json()
-        
+        // const {items} = await response.data
+         const {items}  = await response.json()
         dispatch(
             {
                 type: 'GET_USERS',
@@ -75,6 +78,7 @@ export const GithubProvider = ({children} : Props) => {
             }
             )
         
+        // const response = await axios.get(`${process.env.REACT_APP_GITHUB_URL}/users/${login}`);
         
         const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users/${login}`, {
             headers: {
@@ -86,8 +90,8 @@ export const GithubProvider = ({children} : Props) => {
             alert('No data found')
         }
         else {
-            const result = await response.json()
-        
+            // const result = await response.data
+         const result = await response.json()
         dispatch(
             {
                 type: 'GET_USER',
@@ -112,6 +116,7 @@ export const GithubProvider = ({children} : Props) => {
             }
             )
         
+        //  const response = await axios.get(`${process.env.REACT_APP_GITHUB_URL}/users/${login}/repos`);
         
         const response = await fetch(`${process.env.REACT_APP_GITHUB_URL}/users/${login}/repos`, {
             headers: {
@@ -124,6 +129,7 @@ export const GithubProvider = ({children} : Props) => {
         }
         else {
             const result = await response.json()
+            // const result = await response.data
         
         dispatch(
             {
