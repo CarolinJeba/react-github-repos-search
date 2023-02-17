@@ -14,7 +14,7 @@ export const UserSearch = ({handleBtnClick} : UserSearchModel) => {
     
     const handleChange = (e: any) => setText(e.target.value)
     
-    const handleSubmit =async  (e: any) => {
+    const handleSubmit =  (e: any) => {
         e.preventDefault();
         
         if(text === ''){
@@ -29,10 +29,10 @@ export const UserSearch = ({handleBtnClick} : UserSearchModel) => {
         
     if (!loading) {
             return (
-                  <div className = "box fixed-search">
-                     <form onSubmit={handleSubmit}>
+                  <div className = "box searchbar-nav">
+                     <form data-testid= "search-form" onSubmit={handleSubmit}>
                        <div className = "search_box">
-                       <input type = 'text' placeholder = "Enter username" className = "" value={text} onChange={handleChange}/>
+                       <input type = 'text' placeholder = "Enter username"  value={text} onChange={handleChange}/>
                        <button type = 'submit' onClick = {() => handleBtnClick(true)} className= "btn  btn-lg btn-secondary search-btn"> Search </button>
                     </div>
                     </form>
@@ -40,6 +40,6 @@ export const UserSearch = ({handleBtnClick} : UserSearchModel) => {
                   )
         }
         else {
-            return <div>Loading..</div>
+            return <div className="loading">Loading..</div>
         }
 }

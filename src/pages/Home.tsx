@@ -12,7 +12,6 @@ export const Home = () => {
     };
     
     const handleClick = (username: string) => {
-     
       setIsShow(false)
       setUsername(username);
     };
@@ -20,7 +19,7 @@ export const Home = () => {
     return (
         <>
         <h3 className="title">Github Profile Finder </h3>
-        <p>Type username in the above search bar to display the results</p>
+        <p className="description">Type username in the above search bar to display the results</p>
         <UserSearch handleBtnClick = {handleBtnClick}/>
         <UserResults isShow={isShow} username={username} handleClick={handleClick}/>
         </>

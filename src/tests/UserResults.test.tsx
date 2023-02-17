@@ -1,37 +1,54 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { UserResults } from '../components/users/UserResults';
 import GithubContext from '../context/GithubContext';
-import users from '../mocks/users.json'
+import { UserResults, UserResultsModel } from '../components/users/UserResults';
 
 
-// describe('', () => {
-//     const githubUserMock = {
-//                       users: [{login: "john",}], 
-//                       user: [{name: 'Carol'}], 
-//                       repos: [],
-//                       loading: true, 
-//                       fetchUsers: jest.fn(), 
-//                       searchUsers: jest.fn(), 
-//                       getUserData: jest.fn(),
-//                       getUserRepo: jest.fn()
+describe('renders UserResults component..', () => {
+
+    const githubUserMock = {
+                       users:  [{name: 'John'}],
+                       user: {name: 'Carol'}, 
+                       repos: [{name: 'John'}],
+                       loading: false, 
+                       searchUsers: jest.fn(() => {name: 'Carol'}), 
+                       getUserData: jest.fn(),
+                       getUserRepo: jest.fn(), 
         
-//     }
+    }
     
-//     const TestComponent = (githubUserMock: any) => {
+    const TestComponent = (githubUserMock: any) => {
+        return render(
+            <GithubContext.Provider value={githubUserMock}> 
+             <UserResults isShow = {true} username = {''} handleClick = {jest.fn()}/>
+            </GithubContext.Provider>
+            )
+    }
+    
+    
+    
+    it('should display the user search results', () => {
+        const {container} = TestComponent({...githubUserMock, 
+                                        users: [{name: 'Carol'}, {name: 'John'}, {name: 'Anna'}]})  
+        expect(container.getElementsByClassName('results').length).toBe(3)
         
-//         const props =  {
-//               isShow: false,
-//               username: '',
-//               handleClick: jest.fn
-// }
-//       return render(
-//         <GithubContext.Provider value={githubUserMock}>
-//           <UserResults />
-//         </GithubContext.Provider>
-//       );
-//   }
-//     it('', () => {
-//          const {container} =  render(<UserResults />);
-//     })
-// })
+    })
+    
+    it('should display the user image', () => {
+        const {container} = TestComponent({...githubUserMock, 
+                                        user: [{name: 'Carol', avatar_url: ''}]})  
+        expect(container.getElementsByTagName('img').length).toBe(1)
+        
+    })
+    
+    it('should display the View Profile button', () => {
+        const {container} = TestComponent(githubUserMock)  
+        expect(container.getElementsByTagName('button')).toBeTruthy()
+        
+    })
+   
+    
+})
+
+
+

@@ -1,5 +1,5 @@
 import React from 'react';
-import {useEffect, useContext} from 'react'
+import {useEffect} from 'react'
 import BootstrapTable from 'react-bootstrap-table-next'
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import filterFactory, { textFilter } from 'react-bootstrap-table2-filter';
@@ -66,6 +66,7 @@ const UserRepos = (repos: ReposModel) => {
                  striped
                  pagination= {paginationFactory(paginationOption)}
                  filter={filterFactory()}
+                 id= "ReposTable"
                  />
         </>
         )

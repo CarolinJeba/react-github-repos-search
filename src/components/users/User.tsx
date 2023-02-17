@@ -26,7 +26,7 @@ const User = ({username} : Username) => {
           } = user
    
     return (
-      <div className="card">
+      <div className="card user">
         <div className="card-body">
            <img className="img-avatar" src= {avatar_url} alt=''/>
            <h4 className="card-title">{login}</h4>

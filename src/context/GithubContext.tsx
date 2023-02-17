@@ -4,10 +4,10 @@ import githubReducer from './GithubReducer';
 import { ReposModel } from '../components/tsmodels/repos';
 
 
-interface GithubContextProps  {
+export interface GithubContextProps  {
     users: {}[], 
     user: any,
-    repos: [],
+    repos: any,
     loading: boolean,
     searchUsers: (text: string) => Promise<void>
     getUserData: (login: string) => Promise<void>

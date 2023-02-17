@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import User from './User';
 
 
-interface UserResultsModel {
+export interface UserResultsModel {
    isShow: boolean;
    username: string;
    handleClick: (username: string) => void
@@ -22,7 +22,7 @@ export const UserResults = ({isShow, username, handleClick} : UserResultsModel)=
          {users.map((user: any) => {
          
             return (
-            <div className="card">
+            <div className="card results" key={user.login}>
              <img src={user.avatar_url} alt="" />
                   <div className="cell">
                     <span> 
@@ -41,7 +41,7 @@ export const UserResults = ({isShow, username, handleClick} : UserResultsModel)=
         )
     }
     else if (username !== '') {
-        return <User username= {username}/> 
+        return <User data-testid="single-user" username= {username}/> 
     }
     else return null
 }
